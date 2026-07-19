@@ -2,6 +2,7 @@ import { getLocale } from "@calcom/features/auth/lib/getLocale";
 import { loadTranslations } from "@calcom/i18n/server";
 import { IconSprites } from "@calcom/ui/components/icon";
 import { buildLegacyRequest } from "@lib/buildLegacyCtx";
+import { Analytics } from "@vercel/analytics/next";
 import { dir } from "i18next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
@@ -165,6 +166,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             {children}
           </AppRouterI18nProvider>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );

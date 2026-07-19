@@ -3381,6 +3381,7 @@ __metadata:
     "@types/turndown": "npm:5.0.1"
     "@types/uuid": "npm:8.3.1"
     "@upstash/redis": "npm:1.35.2"
+    "@vercel/analytics": "npm:^2.0.1"
     "@vercel/edge-config": "npm:0.1.1"
     "@vercel/og": "npm:0.6.3"
     accept-language-parser: "npm:1.5.0"
@@ -17370,6 +17371,39 @@ __metadata:
   peerDependencies:
     "@urql/core": ^6.0.0
   checksum: 10/99ecf7333e8c0b48cc9845aa917e816c1b82211ea39b6b56c17f9f086324ff37c6b4131b8824713e5a84c0a7c2875d9e4ec04ad35c4250920d0156c9c267babd
+  languageName: node
+  linkType: hard
+
+"@vercel/analytics@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@vercel/analytics@npm:2.0.1"
+  peerDependencies:
+    "@remix-run/react": ^2
+    "@sveltejs/kit": ^1 || ^2
+    next: ">= 13"
+    nuxt: ">= 3"
+    react: ^18 || ^19 || ^19.0.0-rc
+    svelte: ">= 4"
+    vue: ^3
+    vue-router: ^4
+  peerDependenciesMeta:
+    "@remix-run/react":
+      optional: true
+    "@sveltejs/kit":
+      optional: true
+    next:
+      optional: true
+    nuxt:
+      optional: true
+    react:
+      optional: true
+    svelte:
+      optional: true
+    vue:
+      optional: true
+    vue-router:
+      optional: true
+  checksum: 10/ffef3eea08992e40e08d0fc9900396a9433855a4aaca90602bfea935c26faa30b6d208c034b6e249fb8a69c81cb5a11aa3acd725d5b9067fb30a4508879c6383
   languageName: node
   linkType: hard
 
