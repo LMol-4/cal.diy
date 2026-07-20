@@ -4,7 +4,6 @@ import type { WrappedBookerPropsMain } from "../../types";
 import { useEffect } from "react";
 import { OverlayCalendarContinueModal } from "./OverlayCalendarContinueModal";
 import { OverlayCalendarSettingsModal } from "./OverlayCalendarSettingsModal";
-import { OverlayCalendarSwitch } from "./OverlayCalendarSwitch";
 
 type OverlayCalendarProps = Pick<
   WrappedBookerPropsMain["calendars"],
@@ -22,9 +21,7 @@ export const OverlayCalendar = ({
   onToggleCalendar,
   isOverlayCalendarEnabled,
   handleClickNoCalendar,
-  handleSwitchStateChange,
   handleClickContinue,
-  hasSession,
 }: OverlayCalendarProps): JSX.Element | null => {
   const isPlatform = useIsPlatform();
   const {
@@ -50,11 +47,6 @@ export const OverlayCalendar = ({
 
   return (
     <>
-      <OverlayCalendarSwitch
-        enabled={isOverlayCalendarEnabled}
-        hasSession={hasSession}
-        onStateChange={handleSwitchStateChange}
-      />
       {!isPlatform && (
         <OverlayCalendarContinueModal
           open={isOpenOverlayContinueModal && !isOverlayCalendarEnabled}
