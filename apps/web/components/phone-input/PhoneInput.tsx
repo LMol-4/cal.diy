@@ -111,13 +111,14 @@ function BasePhoneInputWeb({
   flagButtonStyle,
   ...rest
 }: Omit<PhoneInputProps, "defaultCountry">) {
-  const defaultCountry = useDefaultCountry();
+  const defaultCountry = useDefaultCountry(value);
 
   return (
     <PhoneInput
       {...rest}
       value={value ? value.trim().replace(/^\+?/, "+") : undefined}
-      country={value ? undefined : defaultCountry}
+      // Keep the fallback stable so async updates preserve calling-code-only values like +371.
+      country={defaultCountry}
       enableSearch
       disableSearchIcon
       masks={CUSTOM_PHONE_MASKS}
@@ -155,7 +156,7 @@ function BasePhoneInputWeb({
   );
 }
 
-const useDefaultCountry = () => {
+const useDefaultCountry = (value?: string) => {
   const defaultPhoneCountryFromStore = useBookerStore((state) => state.defaultPhoneCountry);
   const [defaultCountry, setDefaultCountry] = useState<CountryCode>(defaultPhoneCountryFromStore || "us");
   const query = trpc.viewer.public.countryCode.useQuery(undefined, {
@@ -166,6 +167,8 @@ const useDefaultCountry = () => {
 
   useEffect(
     function refactorMeWithoutEffect() {
+      if (value) return;
+
       if (defaultPhoneCountryFromStore) {
         setDefaultCountry(defaultPhoneCountryFromStore);
         return;
@@ -187,7 +190,7 @@ const useDefaultCountry = () => {
         }
       }
     },
-    [query.data, defaultPhoneCountryFromStore]
+    [query.data, defaultPhoneCountryFromStore, value]
   );
 
   return defaultCountry;
